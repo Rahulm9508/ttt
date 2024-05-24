@@ -185,9 +185,9 @@ async def txt_handler(bot: Client, m: Message):
     chat_id = input69.text
     await input69.delete(True)
     if chat_id == '/default':
-        chat_id =  -1002039079581
+        chat_id =  -1002175016234
     elif chat_id == '/default@bulk_uploader_bot':
-        chat_id =  -1002039079581
+        chat_id =  -1002175016234
     else:
         chat_id = chat_id
 
