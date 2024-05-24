@@ -41,7 +41,7 @@ bot = Client(
 )
 
 
-@bot.on_message(filters.command(["start7"]))
+@bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
     welcome_message = (
         f"𝐇𝐞𝐥𝐥𝐨 [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n\n"
@@ -50,14 +50,23 @@ async def account_login(bot: Client, m: Message):
     
     additional_commands = (
 
-	"➠𝐔𝐬𝐞 /start7 to restart the bot7\n"
-        "➠𝐔𝐬𝐞 /stop7 to stop the bot7\n"
-	"➠𝐔𝐬𝐞 /txt7 for txt file to video from bot7\n"
+	"➠𝐔𝐬𝐞 /start to restart the bot1\n"
+        "➠𝐔𝐬𝐞 /stop1 to stop the bot1\n"
+	"➠𝐔𝐬𝐞 /txt1 for txt file to video from bot1\n"
+	"➠𝐔𝐬𝐞 /start2 to restart the bot2\n"
+        "➠𝐔𝐬𝐞 /stop2 to stop the bot2\n"
+	"➠𝐔𝐬𝐞 /txt2 for txt file to video from bot2\n"
+	"➠𝐔𝐬𝐞 /start3 to restart the bot3\n"
+        "➠𝐔𝐬𝐞 /stop3 to stop the bot3\n"
+	"➠𝐔𝐬𝐞 /txt3 for txt file to video from bot3\n"
+	"➠𝐔𝐬𝐞 /start9 to restart the bot9\n"
+        "➠𝐔𝐬𝐞 /stop9 to stop the bot9\n"
+	"➠𝐔𝐬𝐞 /txt9 for txt file to video from bot9\n"
     )
     
     editable = await m.reply_text(welcome_message + additional_commands)
 
-@bot.on_message(filters.command("stop7"))
+@bot.on_message(filters.command("stop1"))
 async def restart_handler(bot: Client, m: Message):
     rcredit = "Bot Restarted by " + f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
     if (f'{m.from_user.id}' in batch or batch == []) or m.from_user.id == sudo_user:
@@ -72,7 +81,7 @@ async def restart_handler(bot: Client, m: Message):
 
 
 
-@bot.on_message(filters.command(["txt7"]))
+@bot.on_message(filters.command(["txt1"]))
 async def txt_handler(bot: Client, m: Message):
     
     if batch != []:
