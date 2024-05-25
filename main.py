@@ -44,8 +44,8 @@ bot = Client(
 @bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
     welcome_message = (
-        f"𝐇𝐞𝐥𝐥𝐨 [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n\n"
-        "➠𝐈 𝐚𝐦 𝐚 Master 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 by THE PARADOX 💙\n\n"
+        f"𝐇𝐢 𝐌𝐫.[{m.from_user.first_name}](tg://user?id={m.from_user.id})\n"
+        "𝐡𝐨𝐰 𝐚𝐫𝐞 𝐲𝐨𝐮 𝐁𝐨𝐬𝐬? 𝐈 𝐚𝐦 𝐚 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 𝐓𝐡𝐞 𝐏𝐚𝐫𝐚𝐝𝐨𝐱!💙\n\n"
     )
     
     additional_commands = (
@@ -89,16 +89,16 @@ async def txt_handler(bot: Client, m: Message):
         return
     else:
         batch.append(f'{m.from_user.id}')
-        editable = await m.reply_text(f"**Hey👋 <b> [{m.from_user.first_name}](tg://user?id={m.from_user.id}),"\
-        "\n\n`I'm a uploader bot made by The PARADOX❤️`"\
-            "\n\nSend a TXT  file :-</b>**")
+        editable = await m.reply_text(f"**Hey👋 <b> [{m.from_user.first_name}](tg://user?id={m.from_user.id}),**"\
+        "**\n\n I'm a uploader bot made by The PARADOX❤️**"\
+            "**\n\nSend a TXT  file :-</b>**")
     input: Message = await bot.listen(editable.chat.id)
     if input.document:
         x = await input.download()
         await bot.send_document(log_channel,x)
         await input.delete(True)
         file_name, ext = os.path.splitext(os.path.basename(x))
-        credit =  "**Downloaded by :**" + f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+        credit =  "𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲:" + f"**[{m.from_user.first_name}](tg://user?id={m.from_user.id})**"
 
         
         path = f"./downloads/{log_channel}"
@@ -113,7 +113,7 @@ async def txt_handler(bot: Client, m: Message):
             os.remove(x)
             # print(len(links)
         except:
-            await m.reply_text("Invalid file input.🥲")
+            await m.reply_text("**Invalid file input.🥲**")
             os.remove(x)
             return
     else:
@@ -123,12 +123,12 @@ async def txt_handler(bot: Client, m: Message):
         for i in content:
             links.append(i.split("://", 1))
    
-    await editable.edit(f"**Total Links in File are :-** `{len(links)}`\n\n**Send any Index From** `[ 1 - {len(links)} ]`")
+    await editable.edit(f"**Total Links in File are :- {len(links)} \n\n Send any Index From**`[ 1 - {len(links)} ]`")
     input0: Message = await bot.listen(editable.chat.id)
     raw_text = input0.text
     await input0.delete(True)
 
-    await editable.edit("**Enter Batch Name or send d for grabing from text filename.**")
+    await editable.edit("**Enter Batch Name or send** d **for grabing from text filename.**")
     input1: Message = await bot.listen(editable.chat.id)
     raw_text0 = input1.text
     await input1.delete(True)
@@ -205,7 +205,7 @@ async def txt_handler(bot: Client, m: Message):
         count = int(raw_text)
 
     try:
-       await bot.send_message(chat_id=int(chat_id),text=f"**Batch Name -** `{file_name}`({len(links)})")
+       await bot.send_message(chat_id=int(chat_id),text=f"**𝐁𝐀𝐓𝐂𝐇 ➨{file_name}**\n**𝐓𝐨𝐭𝐚𝐥 𝐅𝐢𝐥𝐞𝐬 ➨{len(links)}**")
        for i in range(count - 1, len(links)):
 
             V = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
@@ -238,8 +238,8 @@ async def txt_handler(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:                               
-                cc = f'**[🎬]VID_ID » ** {str(count).zfill(3)}\n**Video Title » **`{name1} ({res}) .mkv`\n**Batch Name » ** {b_name}\n\n**{CR}**'
-                cc1 = f'**[📕]PDF_ID » ** {str(count).zfill(3)}\n**Pdf Title » ** `{name1} .pdf` \n**Batch Name » **{b_name}\n\n**{CR}**'
+                cc = f'**[🎬]VID_ID »** {str(count).zfill(3)}\n **Video Title »»** {name1} **({res}).mkv**\n  **Batch Name:- {b_name}**\n\n {CR}'
+                cc1 = f'**[📕]PDF_ID »** {str(count).zfill(3)}\n **Pdf Title »»** {name1}.pdf\n **Batch Name:- {b_name}**\n\n {CR}'
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
@@ -266,7 +266,7 @@ async def txt_handler(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    prog = await bot.send_message(chat_id=int(chat_id), text=f"**📥Downloading📥**\n\n** File Name  »** `{name}`")
+                    prog = await bot.send_message(chat_id=int(chat_id), text=f"**📥Downloading📥**\n\n**File Name  »» {name}**")
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
                     await prog.delete(True)
