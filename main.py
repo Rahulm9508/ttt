@@ -179,7 +179,7 @@ async def txt_handler(bot: Client, m: Message):
     chat_id = input69.text
     await input69.delete(True)
     if chat_id == 'de':
-        chat_id = -1002150677761
+        chat_id =-1002175016234
     else:
         chat_id = chat_id
 
