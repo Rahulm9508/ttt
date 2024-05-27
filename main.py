@@ -68,7 +68,7 @@ async def account_login(bot: Client, m: Message):
 
 
 
-@bot.on_message(filters.command("stop") & filters.chat(sudo_group))
+@bot.on_message(filters.command("stop1") & filters.chat(sudo_group))
 async def restart_handler(_, m):
     await m.reply_text("**STOPPED**", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
@@ -79,7 +79,7 @@ async def restart_handler(_, m):
     await m.reply_text("**Restarted! बस करो Bro अब थक गया हु 🥹**", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
-@bot.on_message(filters.command(["txt"]) & filters.chat(sudo_group))
+@bot.on_message(filters.command(["txt1"]) & filters.chat(sudo_group))
 async def txt_handler(bot: Client, m: Message):
     
     if batch != []:
