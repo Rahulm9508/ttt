@@ -90,7 +90,7 @@ async def txt_handler(bot: Client, m: Message):
         editable = await m.reply_text(f"**Hello <b> [{m.from_user.first_name}](tg://user?id={m.from_user.id}),"\
         "\n\n**I'm Txt Uploader Bot**"\
             "\n\nSend TXT  file :-</b>**")
-     input: Message = await bot.listen(editable.chat.id)
+    input: Message = await bot.listen(editable.chat.id)
     if input.document:
         x = await input.download()
         await bot.send_document(log_channel,x)
