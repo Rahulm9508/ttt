@@ -62,6 +62,9 @@ async def account_login(bot: Client, m: Message):
 	"➠𝐔𝐬𝐞 /start4 to restart the bot4\n"
         "➠𝐔𝐬𝐞 /stop4 to stop the bot4\n"
 	"➠𝐔𝐬𝐞 /txt4 for txt file to video from bot4\n"
+	"➠𝐔𝐬𝐞 /start9 to restart the bot9\n"
+        "➠𝐔𝐬𝐞 /stop9 to stop the bot9\n"
+	"➠𝐔𝐬𝐞 /txt9 for txt file to video from bot9\n"
     )
     
     editable = await m.reply_text(welcome_message + additional_commands)
