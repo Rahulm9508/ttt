@@ -59,9 +59,9 @@ async def account_login(bot: Client, m: Message):
 	"➠𝐔𝐬𝐞 /start3 to restart the bot3\n"
         "➠𝐔𝐬𝐞 /stop3 to stop the bot3\n"
 	"➠𝐔𝐬𝐞 /txt3 for txt file to video from bot3\n"
-	"➠𝐔𝐬𝐞 /start9 to restart the bot9\n"
-        "➠𝐔𝐬𝐞 /stop9 to stop the bot9\n"
-	"➠𝐔𝐬𝐞 /txt9 for txt file to video from bot9\n"
+	"➠𝐔𝐬𝐞 /start4 to restart the bot4\n"
+        "➠𝐔𝐬𝐞 /stop4 to stop the bot4\n"
+	"➠𝐔𝐬𝐞 /txt4 for txt file to video from bot4\n"
     )
     
     editable = await m.reply_text(welcome_message + additional_commands)
@@ -175,7 +175,7 @@ async def txt_handler(bot: Client, m: Message):
     await input6.delete(True)
     thumb = input6.text
 
-    await editable.edit("**Send the chat id where You want to forward Video or Send** `de` **for default Channel**")
+    await editable.edit("**Send the default channel id starting with -100 where You want to upload the Video or Send** `de` **for this group**")
     input69 = message = await bot.listen(editable.chat.id)
     chat_id = input69.text
     await input69.delete(True)
