@@ -41,7 +41,7 @@ bot = Client(
 )
 
 
-@bot.on_message(filters.command(["start"]))
+@bot.on_message(filters.command(["start"]) & filters.chat(sudo_group))
 async def account_login(bot: Client, m: Message):
     welcome_message = (
         f"𝐇𝐢 𝐌𝐫.[{m.from_user.first_name}](tg://user?id={m.from_user.id})\n"
