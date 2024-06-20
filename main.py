@@ -41,7 +41,7 @@ bot = Client(
 )
 
 
-@bot.on_message(filters.command(["start4"]) & filters.chat(sudo_group))
+@bot.on_message(filters.command(["start1"]) & filters.chat(sudo_group))
 async def account_login(bot: Client, m: Message):
     welcome_message = (
         f"𝐇𝐢 𝐌𝐫.[{m.from_user.first_name}](tg://user?id={m.from_user.id})\n"
@@ -50,28 +50,28 @@ async def account_login(bot: Client, m: Message):
     
     additional_commands = (
 
-	"➠𝐔𝐬𝐞 /star4 to start the bot4\n"
-        "➠𝐔𝐬𝐞 /stop4 to stop the bot4\n"
-	"➠𝐔𝐬𝐞 /txt4 for txt file to video from bot4\n"
-	"➠𝐔𝐬𝐞 /restart4 to restart the bot4\n"
+	"➠𝐔𝐬𝐞 /star1 to start the bot1\n"
+        "➠𝐔𝐬𝐞 /stop1 to stop the bot1\n"
+	"➠𝐔𝐬𝐞 /txt1 for txt file to video from bot1\n"
+	"➠𝐔𝐬𝐞 /restart1 to restart the bot1\n"
     )
     
     editable = await m.reply_text(welcome_message + additional_commands)
 
 
 
-@bot.on_message(filters.command("stop4") & filters.chat(sudo_group))
+@bot.on_message(filters.command("stop1") & filters.chat(sudo_group))
 async def restart_handler(_, m):
-    await m.reply_text("**STOPPED**", True)
+    await m.reply_text("**STOPPED 🚦**", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command("restart4") & filters.chat(sudo_group))
+@bot.on_message(filters.command("restart1") & filters.chat(sudo_group))
 async def restart_handler(_, m):
     await m.reply_text("**Restarted! बस करो Bro अब थक गया हु 🥹**", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
-@bot.on_message(filters.command(["txt4"]) & filters.chat(sudo_group))
+@bot.on_message(filters.command(["txt1"]) & filters.chat(sudo_group))
 async def txt_handler(bot: Client, m: Message):
     
     if batch != []:
@@ -104,7 +104,7 @@ async def txt_handler(bot: Client, m: Message):
             os.remove(x)
             # print(len(links)
         except:
-            await m.reply_text("Invalid file input.🥲")
+            await m.reply_text("🩸 Invalid file input ❌ ")
             os.remove(x)
             return
     else:
@@ -114,12 +114,12 @@ async def txt_handler(bot: Client, m: Message):
         for i in content:
             links.append(i.split("://", 1))
    
-    await editable.edit(f"**Total Links in File are :-** `{len(links)}`\n\n**Send index no. 1 or where you want to download**")
+    await editable.edit(f"** 🔗Total Links in File are :-** `{len(links)}`\n\n**Send index no. 1 or where you want to download**")
     input0: Message = await bot.listen(editable.chat.id)
     raw_text = input0.text
     await input0.delete(True)
 
-    await editable.edit("**Enter Batch Name or send d for grabing from text filename.**")
+    await editable.edit("**🔬 Enter Batch Name or send `d` for grabing from text filename.**")
     input1: Message = await bot.listen(editable.chat.id)
     raw_text0 = input1.text
     await input1.delete(True)
@@ -128,7 +128,7 @@ async def txt_handler(bot: Client, m: Message):
     else:
         b_name = raw_text0
     
-    await editable.edit("**Enter Video Resolution**")
+    await editable.edit("**💽 Enter Video Resolution**")
     input2: Message = await bot.listen(editable.chat.id)
     raw_text2 = input2.text
     await input2.delete(True)
@@ -150,28 +150,28 @@ async def txt_handler(bot: Client, m: Message):
     except Exception:
             res = "NA"
 
-    await editable.edit("**Enter Your Name or send `de` for use default or** skip ")
+    await editable.edit("**🔖 Enter Your Name or send `d` for use default or** skip ")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
-    if raw_text3 == 'de':
+    if raw_text3 == 'd':
         CR = credit
     elif raw_text3 == 'skip':
         CR = ''
     else:
         CR = f'Downloaded By: {raw_text3}'
       
-    await editable.edit("Now send the **Thumb url**\nEg : ```https://telegra.ph/file/0633f8b6a6f110d34f044.jpg```\n\nor Send `no`")
+    await editable.edit("📰 Now send the **Thumb url**\nEg : ```https://telegra.ph/file/0633f8b6a6f110d34f044.jpg```\n\nor Send `no`")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
     thumb = input6.text
 
-    await editable.edit("**Send the channel id starting with -100 where You want to upload the Video or Send** `de` **for default group**")
+    await editable.edit("**Send the channel id starting with -100 where You want to upload the Video or Send** `d` **for default group**")
     input69 = message = await bot.listen(editable.chat.id)
     chat_id = input69.text
     await input69.delete(True)
-    if chat_id == 'de':
+    if chat_id == 'd':
         chat_id =-1002175016234
     else:
         chat_id = chat_id
@@ -266,12 +266,12 @@ async def txt_handler(bot: Client, m: Message):
                             time.sleep(e.x)
                             continue
                     else:
-                        prog = await bot.send_message(chat_id=int(chat_id), text=f"**Downloading....**\n\n** {name}")
+                        prog = await bot.send_message(chat_id=int(chat_id), text=f"**💉 Downloading....**\n\n** {name}")
                         res_file = await helper.download_video(url, cmd, name)
                         filename = res_file
                         await prog.delete(True)
                         time.sleep(1)
-                        reply = await m.reply_text(f"Trying To Upload - `{name}`")
+                        reply = await m.reply_text(f"**Uploading......**\n\n** {name}")
                         time.sleep(1)
                         await helper.send_vid(bot, m, cc, filename, thumb, name, chat_id)
                         count += 1
@@ -279,16 +279,17 @@ async def txt_handler(bot: Client, m: Message):
                         time.sleep(1)
                         
                 except Exception as e:
-                    await m.reply_text(f"{name}:{url}")
+                    await m.reply_text(f"**Failed To Download ❌**\n**Name** - {name}\n**Link** - `{url}`")
                     count += 1
                     continue
 
         except Exception as e:
             await m.reply_text(e)
-        await m.reply_text("Done ")
-        await bot.send_message(chat_id=int(chat_id),text=f"Done")
+        await m.reply_text(" Done ✅ ")
+        await bot.send_message(chat_id=int(chat_id),text=f" Done ✅ ")
         batch.clear()
 bot.run()
+
 
 
 
