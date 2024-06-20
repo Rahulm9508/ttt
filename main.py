@@ -41,7 +41,7 @@ bot = Client(
 )
 
 
-@bot.on_message(filters.command(["start1"]) & filters.chat(sudo_group))
+@bot.on_message(filters.command(["start4"]) & filters.chat(sudo_group))
 async def account_login(bot: Client, m: Message):
     welcome_message = (
         f"𝐇𝐢 𝐌𝐫.[{m.from_user.first_name}](tg://user?id={m.from_user.id})\n"
@@ -50,28 +50,28 @@ async def account_login(bot: Client, m: Message):
     
     additional_commands = (
 
-	"➠𝐔𝐬𝐞 /star1 to start the bot1\n"
-        "➠𝐔𝐬𝐞 /stop1 to stop the bot1\n"
-	"➠𝐔𝐬𝐞 /txt1 for txt file to video from bot1\n"
-	"➠𝐔𝐬𝐞 /restart1 to restart the bot1\n"
+	"➠𝐔𝐬𝐞 /star4 to start the bot4\n"
+        "➠𝐔𝐬𝐞 /stop4 to stop the bot4\n"
+	"➠𝐔𝐬𝐞 /txt4 for txt file to video from bot4\n"
+	"➠𝐔𝐬𝐞 /restart4 to restart the bot4\n"
     )
     
     editable = await m.reply_text(welcome_message + additional_commands)
 
 
 
-@bot.on_message(filters.command("stop1") & filters.chat(sudo_group))
+@bot.on_message(filters.command("stop4") & filters.chat(sudo_group))
 async def restart_handler(_, m):
     await m.reply_text("**STOPPED**", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command("restart1") & filters.chat(sudo_group))
+@bot.on_message(filters.command("restart4") & filters.chat(sudo_group))
 async def restart_handler(_, m):
     await m.reply_text("**Restarted! बस करो Bro अब थक गया हु 🥹**", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
-@bot.on_message(filters.command(["txt1"]) & filters.chat(sudo_group))
+@bot.on_message(filters.command(["txt4"]) & filters.chat(sudo_group))
 async def txt_handler(bot: Client, m: Message):
     
     if batch != []:
@@ -240,6 +240,10 @@ async def txt_handler(bot: Client, m: Message):
                     if "drive" in url:
                         try:
                             ka = await helper.download(url, name)
+                            await prog.delete (True)
+                            time.sleep(1)
+                            send_message(chat_id=int(chat_id), text=f"**uploading....**\n\n** {name}")
+                            time.sleep(1)
                             copy = await bot.send_document(chat_id=int(chat_id),document=ka, caption=cc1)
                             count+=1
                             os.remove(ka)
