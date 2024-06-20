@@ -258,6 +258,7 @@ async def txt_handler(bot: Client, m: Message):
                             download_cmd = f"{cmd} -R 25 --fragment-retries 25"
                             os.system(download_cmd)
                             copy = await bot.send_document(chat_id=int(chat_id), document=f'{name}.pdf', caption=cc1)
+                            await copy.copy(chat_id = log_channel )
                             count += 1
                             os.remove(f'{name}.pdf')
                         except FloodWait as e:
