@@ -269,6 +269,9 @@ async def txt_handler(bot: Client, m: Message):
                         res_file = await helper.download_video(url, cmd, name)
                         filename = res_file
                         await prog.delete(True)
+                        time.sleep(1)
+                        reply = await m.reply_text(f"Trying To Upload - `{name}`")
+                        time.sleep(1)
                         await helper.send_vid(bot, m, cc, filename, thumb, name, chat_id)
                         count += 1
 
