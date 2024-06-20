@@ -274,7 +274,9 @@ async def txt_handler(bot: Client, m: Message):
                         time.sleep(1)
                         await helper.send_vid(bot, m, cc, filename, thumb, name, chat_id)
                         count += 1
-
+                        await reply.delete(True)
+                        time.sleep(1)
+                        
                 except Exception as e:
                     await m.reply_text(f"{name}:{url}")
                     count += 1
@@ -286,6 +288,7 @@ async def txt_handler(bot: Client, m: Message):
         await bot.send_message(chat_id=int(chat_id),text=f"Done")
         batch.clear()
 bot.run()
+
 
 
 
