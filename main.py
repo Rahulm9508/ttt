@@ -190,6 +190,7 @@ async def txt_handler(bot: Client, m: Message):
         count = int(raw_text)
         try:
             await bot.send_message(chat_id=int(chat_id), text=f"**𝐁𝐀𝐓𝐂𝐇 ➨ {b_name}**\n**TOTAL FILE ➨** **{len(links)}**")
+            await m.reply_text(f"**𝐁𝐀𝐓𝐂𝐇 ➨ {b_name}**\n**TOTAL FILE ➨** **{len(links)}**")
             for i in range(count - 1, len(links)):
 
                 V = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","")
@@ -267,9 +268,11 @@ async def txt_handler(bot: Client, m: Message):
                             continue
                     else:
                         prog = await bot.send_message(chat_id=int(chat_id), text=f"**💉 Downloading....**\n\n** {name}")
+                        reply = await m.reply_text(f"**💉 Downloading....**\n\n** {name}")
                         res_file = await helper.download_video(url, cmd, name)
                         filename = res_file
                         await prog.delete(True)
+                        await reply.delete(True)
                         time.sleep(1)
                         reply = await m.reply_text(f"**Uploading......**\n\n** {name}")
                         time.sleep(1)
@@ -289,8 +292,6 @@ async def txt_handler(bot: Client, m: Message):
         await bot.send_message(chat_id=int(chat_id),text=f" Done ✅ ")
         batch.clear()
 bot.run()
-
-
 
 
 
