@@ -274,7 +274,7 @@ async def txt_handler(bot: Client, m: Message):
                         await prog.delete(True)
                         await reply.delete(True)
                         time.sleep(1)
-                        reply = await m.reply_text(f"**Uploading......**\n\n** {name}")
+                        reply = await m.reply_text(f"**Uploading**......**\n\n** {name}")
                         time.sleep(1)
                         await helper.send_vid(bot, m, cc, filename, thumb, name, chat_id)
                         count += 1
