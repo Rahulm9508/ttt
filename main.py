@@ -45,7 +45,7 @@ bot = Client(
 async def account_login(bot: Client, m: Message):
     welcome_message = (
         f"𝐇𝐢 𝐌𝐫.[{m.from_user.first_name}](tg://user?id={m.from_user.id})\n"
-        "𝐡𝐨𝐰 𝐚𝐫𝐞 𝐲𝐨𝐮 𝐁𝐨𝐬𝐬? 𝐈 𝐚𝐦 𝐚 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 𝐓𝐡𝐞 𝐏𝐚𝐫𝐚𝐝𝐨𝐱!💙\n\n"
+        "𝐡𝐨𝐰 𝐚𝐫𝐞 𝐲𝐨𝐮 𝐁𝐨𝐬𝐬? 𝐈 𝐚𝐦 𝐚 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 𝐓𝐡𝐞 SAHUJI💙\n\n"
     )
     
     additional_commands = (
@@ -172,7 +172,7 @@ async def txt_handler(bot: Client, m: Message):
     chat_id = input69.text
     await input69.delete(True)
     if chat_id == 'd':
-        chat_id = -1002478234192
+        chat_id = -1002116155974
     else:
         chat_id = chat_id
 
